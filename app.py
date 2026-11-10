@@ -658,68 +658,96 @@ if "final_schedule" in st.session_state:
         len(final_schedule) == len(all_time_slots)
     )
 
-    program_count = len(set(final_schedule))
-    total_programs = len(all_programs)
-
-    assigned_slots = len(final_schedule)
-    total_slots = len(all_time_slots)
-
     col1, col2 = st.columns(2)
 
     with col1:
 
-        st.markdown(
-            f"""
-            <div class="info-card">
-                <div class="card-label">PROGRAM COVERAGE</div>
-                <div class="card-value">
-                    {program_count} / {total_programs}
-                </div>
-                <p style="color:#64748B; font-size:13px;">
-                    Programs included in the schedule
-                </p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
         if all_programs_included:
-            st.success("All programs are included.")
+            st.markdown("""
+            <div style="
+                background-color:#E8F5E9;
+                border:1px solid #A5D6A7;
+                border-radius:10px;
+                padding:15px;
+                color:#1B5E20;
+                font-weight:600;">
+                ✓ All programs are included.
+            </div>
+            """, unsafe_allow_html=True)
+
         else:
-            st.error("Some programs are missing.")
+            st.markdown("""
+            <div style="
+                background-color:#FDECEC;
+                border:1px solid #F5B5B5;
+                border-radius:10px;
+                padding:15px;
+                color:#B71C1C;
+                font-weight:600;">
+                ✗ Some programs are missing.
+            </div>
+            """, unsafe_allow_html=True)
 
     with col2:
 
-        st.markdown(
-            f"""
-            <div class="info-card">
-                <div class="card-label">TIME SLOT COVERAGE</div>
-                <div class="card-value">
-                    {assigned_slots} / {total_slots}
-                </div>
-                <p style="color:#64748B; font-size:13px;">
-                    Time slots successfully assigned
-                </p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
         if correct_time_slots:
-            st.success("All time slots are assigned.")
+            st.markdown("""
+            <div style="
+                background-color:#E8F5E9;
+                border:1px solid #A5D6A7;
+                border-radius:10px;
+                padding:15px;
+                color:#1B5E20;
+                font-weight:600;">
+                ✓ All time slots are assigned.
+            </div>
+            """, unsafe_allow_html=True)
+
         else:
-            st.error("Some time slots are missing.")
+            st.markdown("""
+            <div style="
+                background-color:#FDECEC;
+                border:1px solid #F5B5B5;
+                border-radius:10px;
+                padding:15px;
+                color:#B71C1C;
+                font-weight:600;">
+                ✗ Some time slots are missing.
+            </div>
+            """, unsafe_allow_html=True)
 
     if all_programs_included and correct_time_slots:
-        st.success(
-            "Schedule Valid: All scheduling requirements are satisfied."
-        )
-    else:
-        st.warning(
-            "Schedule Invalid: Please check the scheduling results."
-        )
 
-    # Download schedule
+        st.markdown("""
+        <div style="
+            background-color:#E3F2FD;
+            border:1px solid #90CAF9;
+            border-radius:10px;
+            padding:15px;
+            margin-top:15px;
+            color:#0D47A1;
+            font-weight:700;">
+            ✓ SCHEDULE VALID
+            <div style="
+                font-size:13px;
+                font-weight:400;
+                margin-top:5px;
+                color:#1565C0;">
+                All scheduling requirements are satisfied.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    else:
+
+        st.error("Schedule Invalid. Please check the scheduling results.")
+
+    # DOWNLOAD SCHEDULE
+
+    st.markdown(
+        '<div class="section-title">Download Schedule</div>',
+        unsafe_allow_html=True
+    )
 
     csv_data = schedule_df.to_csv(index=False).encode("utf-8")
 
@@ -727,17 +755,9 @@ if "final_schedule" in st.session_state:
         label="Download Schedule as CSV",
         data=csv_data,
         file_name="final_tv_schedule.csv",
-        mime="text/csv"
+        mime="text/csv",
+        use_container_width=True
     )
-
-else:
-
-    st.info(
-        "No schedule has been generated yet. "
-        "Adjust the GA parameters and click "
-        "'Generate Schedule' to view the results."
-    )
-
 
 # ==========================================
 # 16. FOOTER
