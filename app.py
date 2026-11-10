@@ -22,36 +22,63 @@ st.header("Genetic Algorithm", divider="gray")
 
 st.markdown("""
 <style>
+    /* Main background */
     .stApp {
+        background-color: #F7F9FC;
+        color: #243B53;
+    }
+
+    [data-testid="stAppViewContainer"] {
         background-color: #F7F9FC;
     }
 
+    /* Force readable text */
+    html, body, [class*="st-"] {
+        color: #243B53;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #243B53 !important;
+    }
+
+    p, label, span, li {
+        color: #334155;
+    }
+
+    [data-testid="stMarkdownContainer"] {
+        color: #334155;
+    }
+
+    [data-testid="stMarkdownContainer"] p {
+        color: #334155 !important;
+    }
+
+    /* Main layout */
     .main .block-container {
         padding-top: 2rem;
         padding-bottom: 3rem;
         max-width: 1200px;
     }
 
-    h1, h2, h3 {
-        color: #243B53;
-    }
-
+    /* Description */
     .description {
-        color: #64748B;
+        color: #64748B !important;
         font-size: 15px;
         margin-bottom: 25px;
     }
 
+    /* Section titles */
     .section-title {
-        color: #243B53;
+        color: #243B53 !important;
         font-size: 21px;
         font-weight: 600;
         margin-top: 15px;
         margin-bottom: 12px;
     }
 
+    /* Information cards */
     .info-card {
-        background-color: white;
+        background-color: #FFFFFF;
         border: 1px solid #E2E8F0;
         border-radius: 12px;
         padding: 20px;
@@ -59,20 +86,21 @@ st.markdown("""
     }
 
     .card-label {
-        color: #64748B;
+        color: #64748B !important;
         font-size: 13px;
         margin-bottom: 7px;
     }
 
     .card-value {
-        color: #243B53;
+        color: #243B53 !important;
         font-size: 27px;
         font-weight: 700;
     }
 
+    /* Buttons */
     .stButton > button {
         background-color: #2563EB;
-        color: white;
+        color: #FFFFFF !important;
         border-radius: 8px;
         border: none;
         padding: 10px 20px;
@@ -82,22 +110,43 @@ st.markdown("""
 
     .stButton > button:hover {
         background-color: #1D4ED8;
-        color: white;
+        color: #FFFFFF !important;
     }
 
+    /* Sidebar */
     [data-testid="stSidebar"] {
         background-color: #FFFFFF;
         border-right: 1px solid #E2E8F0;
     }
 
-    div[data-testid="stDataFrame"] {
+    [data-testid="stSidebar"] * {
+        color: #243B53;
+    }
+
+    /* Input controls */
+    input, textarea {
+        color: #243B53 !important;
+        background-color: #FFFFFF !important;
+    }
+
+    /* Tables */
+    [data-testid="stDataFrame"] {
         border: 1px solid #E2E8F0;
         border-radius: 10px;
         overflow: hidden;
     }
+
+    /* Metrics */
+    [data-testid="stMetricLabel"] {
+        color: #64748B !important;
+    }
+
+    [data-testid="stMetricValue"] {
+        color: #243B53 !important;
+    }
+
 </style>
 """, unsafe_allow_html=True)
-
 
 # ==========================================
 # 3. LOAD MODIFIED CSV FILE
