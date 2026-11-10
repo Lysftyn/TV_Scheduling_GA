@@ -145,6 +145,72 @@ st.markdown("""
         color: #243B53 !important;
     }
 
+    
+    /* Download button */
+    [data-testid="stDownloadButton"] button {
+        background-color: #2563EB !important;
+        color: #FFFFFF !important;
+        border: 1px solid #2563EB !important;
+    }
+
+    [data-testid="stDownloadButton"] button p {
+        color: #FFFFFF !important;
+    }
+
+    [data-testid="stDownloadButton"] button:hover {
+        background-color: #1D4ED8 !important;
+        color: #FFFFFF !important;
+    }
+
+    /* General Streamlit buttons */
+    .stButton button {
+        background-color: #2563EB !important;
+        color: #FFFFFF !important;
+    }
+
+    .stButton button p {
+        color: #FFFFFF !important;
+    }
+
+    /* Top toolbar */
+    [data-testid="stToolbar"] {
+        background-color: #F7F9FC !important;
+    }
+
+    [data-testid="stToolbar"] button {
+        color: #243B53 !important;
+        background-color: transparent !important;
+    }
+
+    [data-testid="stToolbar"] button svg {
+        fill: #243B53 !important;
+        color: #243B53 !important;
+    }
+
+    /* Header and menu buttons */
+    header[data-testid="stHeader"] {
+        background-color: #F7F9FC !important;
+    }
+
+    header[data-testid="stHeader"] button {
+        color: #243B53 !important;
+    }
+
+    header[data-testid="stHeader"] button svg {
+        fill: #243B53 !important;
+        color: #243B53 !important;
+    }
+
+    /* Share and three-dot menu */
+    [data-testid="stMainMenu"] button {
+        color: #243B53 !important;
+    }
+
+    [data-testid="stMainMenu"] svg {
+        fill: #243B53 !important;
+        color: #243B53 !important;
+    }
+
 </style>
 """, unsafe_allow_html=True)
 
