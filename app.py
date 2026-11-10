@@ -658,35 +658,66 @@ if "final_schedule" in st.session_state:
         len(final_schedule) == len(all_time_slots)
     )
 
+    program_count = len(set(final_schedule))
+    total_programs = len(all_programs)
+
+    assigned_slots = len(final_schedule)
+    total_slots = len(all_time_slots)
+
     col1, col2 = st.columns(2)
 
     with col1:
 
+        st.markdown(
+            f"""
+            <div class="info-card">
+                <div class="card-label">PROGRAM COVERAGE</div>
+                <div class="card-value">
+                    {program_count} / {total_programs}
+                </div>
+                <p style="color:#64748B; font-size:13px;">
+                    Programs included in the schedule
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
         if all_programs_included:
-
-            st.success(
-                "All programs are included in the schedule."
-            )
-
+            st.success("All programs are included.")
         else:
-
-            st.error(
-                "Some programs are missing from the schedule."
-            )
+            st.error("Some programs are missing.")
 
     with col2:
 
+        st.markdown(
+            f"""
+            <div class="info-card">
+                <div class="card-label">TIME SLOT COVERAGE</div>
+                <div class="card-value">
+                    {assigned_slots} / {total_slots}
+                </div>
+                <p style="color:#64748B; font-size:13px;">
+                    Time slots successfully assigned
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
         if correct_time_slots:
-
-            st.success(
-                "All time slots have been assigned."
-            )
-
+            st.success("All time slots are assigned.")
         else:
+            st.error("Some time slots are missing.")
 
-            st.error(
-                "The number of time slots is incorrect."
-            )
+    if all_programs_included and correct_time_slots:
+        st.success(
+            "Schedule Valid: All scheduling requirements are satisfied."
+        )
+    else:
+        st.warning(
+            "Schedule Invalid: Please check the scheduling results."
+        )
 
     # Download schedule
 
