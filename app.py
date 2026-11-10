@@ -172,44 +172,72 @@ st.markdown("""
         color: #FFFFFF !important;
     }
 
-    /* Top toolbar */
-    [data-testid="stToolbar"] {
-        background-color: #F7F9FC !important;
-    }
+    
+/* =================================
+   STREAMLIT TOP TOOLBAR
+   ================================= */
 
-    [data-testid="stToolbar"] button {
-        color: #243B53 !important;
-        background-color: transparent !important;
-    }
+/* Keep toolbar background consistent */
+[data-testid="stToolbar"] {
+    background-color: transparent !important;
+}
 
-    [data-testid="stToolbar"] button svg {
-        fill: #243B53 !important;
-        color: #243B53 !important;
-    }
+/* All top toolbar buttons */
+[data-testid="stToolbar"] button,
+header[data-testid="stHeader"] button {
+    background-color: #FFFFFF !important;
+    color: #1E293B !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 8px !important;
+    opacity: 1 !important;
+    box-shadow: none !important;
+}
 
-    /* Header and menu buttons */
-    header[data-testid="stHeader"] {
-        background-color: #F7F9FC !important;
-    }
+/* Toolbar icons */
+[data-testid="stToolbar"] button svg,
+header[data-testid="stHeader"] button svg {
+    color: #1E293B !important;
+    fill: none !important;
+    stroke: #1E293B !important;
+    opacity: 1 !important;
+}
 
-    header[data-testid="stHeader"] button {
-        color: #243B53 !important;
-    }
+/* Text inside toolbar buttons */
+[data-testid="stToolbar"] button span,
+[data-testid="stToolbar"] button p,
+header[data-testid="stHeader"] button span,
+header[data-testid="stHeader"] button p {
+    color: #1E293B !important;
+}
 
-    header[data-testid="stHeader"] button svg {
-        fill: #243B53 !important;
-        color: #243B53 !important;
-    }
+/* Hover effect */
+[data-testid="stToolbar"] button:hover,
+header[data-testid="stHeader"] button:hover {
+    background-color: #E2E8F0 !important;
+    border-color: #94A3B8 !important;
+}
 
-    /* Share and three-dot menu */
-    [data-testid="stMainMenu"] button {
-        color: #243B53 !important;
-    }
+/* Download button */
+[data-testid="stDownloadButton"] button {
+    background-color: #2563EB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #2563EB !important;
+}
 
-    [data-testid="stMainMenu"] svg {
-        fill: #243B53 !important;
-        color: #243B53 !important;
-    }
+[data-testid="stDownloadButton"] button p {
+    color: #FFFFFF !important;
+}
+
+/* Main generate button */
+.stButton button {
+    background-color: #2563EB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #2563EB !important;
+}
+
+.stButton button p {
+    color: #FFFFFF !important;
+}
 
 </style>
 """, unsafe_allow_html=True)
