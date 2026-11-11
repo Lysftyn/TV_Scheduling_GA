@@ -291,6 +291,30 @@ html[data-theme="dark"] section[data-testid="stSidebar"]
     color: #FFFFFF !important;
 }
 
+/* Sidebar help message - LIGHT MODE */
+html[data-theme="light"] .sidebar-help-box {
+    background-color: #EFF6FF !important;
+    color: #1E3A8A !important;
+    border: 1px solid #BFDBFE !important;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+/* Sidebar help message - DARK MODE */
+html[data-theme="dark"] .sidebar-help-box {
+    background-color: #1E293B !important;
+    color: #FFFFFF !important;
+    border: 1px solid #475569 !important;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -594,22 +618,13 @@ st.sidebar.divider()
 
 st.sidebar.markdown(
     """
-    <div style="
-        background-color: #1E293B !important;
-        color: #FFFFFF !important;
-        border: 1px solid #475569;
-        border-radius: 10px;
-        padding: 12px;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 1.6;
-    ">
-        ℹ️ Change the parameter values and click Generate Schedule to create a new result.
+    <div class="sidebar-help-box">
+        ℹ️ Change the parameter values and click Generate
+        Schedule to create a new result.
     </div>
     """,
     unsafe_allow_html=True
 )
-
 # ==========================================
 # 13. SYSTEM OVERVIEW
 # ==========================================
