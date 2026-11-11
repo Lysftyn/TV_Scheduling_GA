@@ -973,12 +973,15 @@ if "final_schedule" in st.session_state:
                 <div class="status-info">
                     ✓ SCHEDULE VALID
 
-                    <div style="
-                        font-size:13px;
-                        font-weight:400;
-                        margin-top:6px;">
-                        All scheduling requirements are satisfied.
-                    </div>
+st.markdown("""
+<div style="
+    font-size:13px;
+    font-weight:400;
+    margin-top:6px;">
+    All scheduling requirements are satisfied.
+</div>
+""", unsafe_allow_html=True)
+
                 </div>
                 """,
                 unsafe_allow_html=True
