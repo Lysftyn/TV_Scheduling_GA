@@ -285,11 +285,13 @@ button[data-baseweb="tab"][aria-selected="true"] {
     padding: 20px 5px;
 }
 
-/* Sidebar help message - LIGHT MODE */
-html[data-theme="light"] .sidebar-help-box {
+/* ---------- SIDEBAR HELP MESSAGE ---------- */
+
+.sidebar-help-box {
+    display: block !important;
     background-color: #EFF6FF !important;
     color: #1E3A8A !important;
-    border: 1px solid #BFDBFE !important;
+    border: 1px solid #93C5FD !important;
     border-radius: 10px;
     padding: 12px;
     font-size: 14px;
@@ -297,16 +299,10 @@ html[data-theme="light"] .sidebar-help-box {
     line-height: 1.6;
 }
 
-/* Sidebar help message - DARK MODE */
-html[data-theme="dark"] .sidebar-help-box {
-    background-color: #1E293B !important;
-    color: #FFFFFF !important;
-    border: 1px solid #475569 !important;
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.6;
+.sidebar-help-box p,
+.sidebar-help-box span,
+.sidebar-help-box * {
+    color: #1E3A8A !important;
 }
 
 </style>
