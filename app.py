@@ -520,35 +520,36 @@ def genetic_algorithm(crossover_rate, mutation_rate):
 
     return best_schedule
 
-
 # ==========================================
 # 11. HERO HEADER
 # ==========================================
 
-st.markdown("""
-<div class="hero">
+st.markdown(
+    """
+    <div class="hero">
 
-    <div class="hero-label">
-        BROADCASTING INTELLIGENCE SYSTEM
+        <div class="hero-label">
+            BROADCASTING INTELLIGENCE SYSTEM
+        </div>
+
+        <div class="hero-title">
+            TV Program Scheduling
+        </div>
+
+        <div class="hero-description">
+            An intelligent scheduling platform that uses
+            Genetic Algorithm to generate an optimized TV
+            broadcasting schedule based on program ratings.
+        </div>
+
+        <div class="hero-tag">
+            📺 Genetic Algorithm Based Optimization
+        </div>
+
     </div>
-
-    <div class="hero-title">
-        TV Program Scheduling
-    </div>
-
-    <div class="hero-description">
-        An intelligent scheduling platform that uses
-        Genetic Algorithm to generate an optimized TV
-        broadcasting schedule based on program ratings.
-    </div>
-
-    <div class="hero-tag">
-        📺 Genetic Algorithm Based Optimization
-    </div>
-
-</div>
-""", unsafe_allow_html=True)
-
+    """,
+    unsafe_allow_html=True
+)
 
 # ==========================================
 # 12. SIDEBAR - GA SETTINGS
