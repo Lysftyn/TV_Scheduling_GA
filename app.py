@@ -586,9 +586,22 @@ st.sidebar.markdown(
 
 st.sidebar.divider()
 
-st.sidebar.info(
-    "Change the parameter values and click "
-    "Generate Schedule to create a new result."
+st.sidebar.markdown(
+    """
+    <div style="
+        background-color: #1E3A8A;
+        border: 1px solid #60A5FA;
+        border-radius: 10px;
+        padding: 12px;
+        color: #FFFFFF !important;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.6;
+    ">
+        Change the parameter values and click Generate Schedule to create a new result.
+    </div>
+    """,
+    unsafe_allow_html=True
 )
 
 
