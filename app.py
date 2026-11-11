@@ -10,237 +10,277 @@ from collections import Counter
 # ==========================================
 
 st.set_page_config(
-    page_title="Genetic Algorithm",
+    page_title="TV Program Scheduling",
+    page_icon="📺",
     layout="wide"
 )
 
-st.header("Genetic Algorithm", divider="gray")
-
 # ==========================================
-# 2. CUSTOM CSS - MINIMAL LIGHT THEME
+# 2. CUSTOM CSS - MODERN DASHBOARD
 # ==========================================
 
 st.markdown("""
 <style>
-    /* Main background */
-    .stApp {
-        background-color: #F7F9FC;
-        color: #243B53;
-    }
 
-    [data-testid="stAppViewContainer"] {
-        background-color: #F7F9FC;
-    }
+/* ---------- GENERAL BACKGROUND ---------- */
 
-    /* Force readable text */
-    html, body, [class*="st-"] {
-        color: #243B53;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        color: #243B53 !important;
-    }
-
-    p, label, span, li {
-        color: #334155;
-    }
-
-    [data-testid="stMarkdownContainer"] {
-        color: #334155;
-    }
-
-    [data-testid="stMarkdownContainer"] p {
-        color: #334155 !important;
-    }
-
-    /* Main layout */
-    .main .block-container {
-        padding-top: 2rem;
-        padding-bottom: 3rem;
-        max-width: 1200px;
-    }
-
-    /* Description */
-    .description {
-        color: #64748B !important;
-        font-size: 15px;
-        margin-bottom: 25px;
-    }
-
-    /* Section titles */
-    .section-title {
-        color: #243B53 !important;
-        font-size: 21px;
-        font-weight: 600;
-        margin-top: 15px;
-        margin-bottom: 12px;
-    }
-
-    /* Information cards */
-    .info-card {
-        background-color: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 12px;
-    }
-
-    .card-label {
-        color: #64748B !important;
-        font-size: 13px;
-        margin-bottom: 7px;
-    }
-
-    .card-value {
-        color: #243B53 !important;
-        font-size: 27px;
-        font-weight: 700;
-    }
-
-    /* Buttons */
-    .stButton > button {
-        background-color: #2563EB;
-        color: #FFFFFF !important;
-        border-radius: 8px;
-        border: none;
-        padding: 10px 20px;
-        font-weight: 600;
-        width: 100%;
-    }
-
-    .stButton > button:hover {
-        background-color: #1D4ED8;
-        color: #FFFFFF !important;
-    }
-
-    /* Sidebar */
-    [data-testid="stSidebar"] {
-        background-color: #FFFFFF;
-        border-right: 1px solid #E2E8F0;
-    }
-
-    [data-testid="stSidebar"] * {
-        color: #243B53;
-    }
-
-    /* Input controls */
-    input, textarea {
-        color: #243B53 !important;
-        background-color: #FFFFFF !important;
-    }
-
-    /* Tables */
-    [data-testid="stDataFrame"] {
-        border: 1px solid #E2E8F0;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    /* Metrics */
-    [data-testid="stMetricLabel"] {
-        color: #64748B !important;
-    }
-
-    [data-testid="stMetricValue"] {
-        color: #243B53 !important;
-    }
-
-    
-    /* Download button */
-    [data-testid="stDownloadButton"] button {
-        background-color: #2563EB !important;
-        color: #FFFFFF !important;
-        border: 1px solid #2563EB !important;
-    }
-
-    [data-testid="stDownloadButton"] button p {
-        color: #FFFFFF !important;
-    }
-
-    [data-testid="stDownloadButton"] button:hover {
-        background-color: #1D4ED8 !important;
-        color: #FFFFFF !important;
-    }
-
-    /* General Streamlit buttons */
-    .stButton button {
-        background-color: #2563EB !important;
-        color: #FFFFFF !important;
-    }
-
-    .stButton button p {
-        color: #FFFFFF !important;
-    }
-
-    
-/* =================================
-   STREAMLIT TOP TOOLBAR
-   ================================= */
-
-/* Keep toolbar background consistent */
-[data-testid="stToolbar"] {
-    background-color: transparent !important;
+.stApp {
+    background-color: #F4F7FC;
 }
 
-/* All top toolbar buttons */
-[data-testid="stToolbar"] button,
-header[data-testid="stHeader"] button {
-    background-color: #FFFFFF !important;
-    color: #1E293B !important;
-    border: 1px solid #CBD5E1 !important;
-    border-radius: 8px !important;
-    opacity: 1 !important;
-    box-shadow: none !important;
+[data-testid="stAppViewContainer"] {
+    background-color: #F4F7FC;
 }
 
-/* Toolbar icons */
-[data-testid="stToolbar"] button svg,
-header[data-testid="stHeader"] button svg {
-    color: #1E293B !important;
-    fill: none !important;
-    stroke: #1E293B !important;
-    opacity: 1 !important;
+.main .block-container {
+    max-width: 1250px;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
 }
 
-/* Text inside toolbar buttons */
-[data-testid="stToolbar"] button span,
-[data-testid="stToolbar"] button p,
-header[data-testid="stHeader"] button span,
-header[data-testid="stHeader"] button p {
-    color: #1E293B !important;
+/* ---------- TEXT ---------- */
+
+h1, h2, h3, h4 {
+    color: #172554 !important;
+    font-weight: 700 !important;
 }
 
-/* Hover effect */
-[data-testid="stToolbar"] button:hover,
-header[data-testid="stHeader"] button:hover {
-    background-color: #E2E8F0 !important;
-    border-color: #94A3B8 !important;
+p, label, li {
+    color: #475569;
 }
 
-/* Download button */
+[data-testid="stMarkdownContainer"] p {
+    color: #475569;
+}
+
+/* ---------- HERO HEADER ---------- */
+
+.hero {
+    background: linear-gradient(120deg, #172554 0%, #1D4ED8 100%);
+    padding: 35px 38px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 24px rgba(30, 64, 175, 0.15);
+}
+
+.hero-label {
+    color: #BFDBFE !important;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.hero-title {
+    color: #FFFFFF !important;
+    font-size: 34px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.25;
+}
+
+.hero-description {
+    color: #DBEAFE !important;
+    font-size: 15px;
+    margin-top: 12px;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+.hero-tag {
+    display: inline-block;
+    background-color: rgba(255,255,255,0.15);
+    color: #FFFFFF !important;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 18px;
+}
+
+/* ---------- SECTION HEADINGS ---------- */
+
+.section-heading {
+    color: #172554 !important;
+    font-size: 21px;
+    font-weight: 750;
+    margin-top: 18px;
+    margin-bottom: 5px;
+}
+
+.section-description {
+    color: #64748B !important;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+/* ---------- STATISTIC CARDS ---------- */
+
+.stat-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 15px;
+    padding: 20px 22px;
+    min-height: 115px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+}
+
+.stat-label {
+    color: #64748B !important;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    color: #172554 !important;
+    font-size: 29px;
+    font-weight: 800;
+}
+
+.stat-note {
+    color: #94A3B8 !important;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+/* ---------- SIDEBAR ---------- */
+
+[data-testid="stSidebar"] {
+    background-color: #FFFFFF;
+    border-right: 1px solid #E2E8F0;
+}
+
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: #172554 !important;
+}
+
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] label {
+    color: #475569 !important;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.stButton > button {
+    background-color: #2563EB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #2563EB !important;
+    border-radius: 10px !important;
+    min-height: 45px;
+    font-weight: 700 !important;
+    transition: 0.2s ease;
+}
+
+.stButton > button:hover {
+    background-color: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+}
+
+/* ---------- DOWNLOAD BUTTON ---------- */
+
 [data-testid="stDownloadButton"] button {
-    background-color: #2563EB !important;
+    background-color: #172554 !important;
     color: #FFFFFF !important;
-    border: 1px solid #2563EB !important;
+    border: 1px solid #172554 !important;
+    border-radius: 10px !important;
+    min-height: 45px;
+    font-weight: 700 !important;
 }
 
-[data-testid="stDownloadButton"] button p {
+[data-testid="stDownloadButton"] button:hover {
+    background-color: #1E40AF !important;
     color: #FFFFFF !important;
 }
 
-/* Main generate button */
-.stButton button {
-    background-color: #2563EB !important;
+[data-testid="stDownloadButton"] button p,
+[data-testid="stDownloadButton"] button span {
     color: #FFFFFF !important;
-    border: 1px solid #2563EB !important;
 }
 
-.stButton button p {
-    color: #FFFFFF !important;
+/* ---------- DATA TABLE ---------- */
+
+[data-testid="stDataFrame"] {
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* ---------- METRICS ---------- */
+
+[data-testid="stMetric"] {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 13px;
+    padding: 15px;
+}
+
+[data-testid="stMetricLabel"] {
+    color: #64748B !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: #172554 !important;
+}
+
+/* ---------- TABS ---------- */
+
+button[data-baseweb="tab"] {
+    color: #64748B !important;
+    font-weight: 600;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: #2563EB !important;
+}
+
+/* ---------- STATUS CARDS ---------- */
+
+.status-success {
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    border-radius: 12px;
+    padding: 16px;
+    color: #065F46 !important;
+    font-weight: 650;
+    margin-bottom: 10px;
+}
+
+.status-failure {
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 12px;
+    padding: 16px;
+    color: #991B1B !important;
+    font-weight: 650;
+    margin-bottom: 10px;
+}
+
+.status-info {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 12px;
+    padding: 18px;
+    color: #1E40AF !important;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+/* ---------- FOOTER ---------- */
+
+.footer {
+    text-align: center;
+    color: #94A3B8 !important;
+    font-size: 12px;
+    padding: 20px 5px;
 }
 
 </style>
 """, unsafe_allow_html=True)
+
 
 # ==========================================
 # 3. LOAD MODIFIED CSV FILE
@@ -255,28 +295,28 @@ def load_ratings(file_path):
     df = pd.read_csv(file_path)
 
     if df.empty or len(df.columns) < 2:
-        raise ValueError("The CSV file does not contain valid program ratings.")
+        raise ValueError(
+            "The CSV file does not contain valid program ratings."
+        )
 
     program_column = df.columns[0]
-
     ratings = {}
 
     for _, row in df.iterrows():
 
         program = str(row[program_column]).strip()
-
         ratings[program] = {}
 
         for column in df.columns[1:]:
 
-            hour = int(str(column).replace("Hour", "").strip())
+            hour = int(
+                str(column).replace("Hour", "").strip()
+            )
 
             ratings[program][hour] = float(row[column])
 
     return ratings
 
-
-# Check CSV file
 
 if not DATA_FILE.exists():
 
@@ -375,7 +415,6 @@ def repair_schedule(schedule):
         if replaceable_positions:
 
             position = random.choice(replaceable_positions)
-
             old_program = schedule[position]
 
             schedule[position] = missing_program
@@ -470,7 +509,6 @@ def genetic_algorithm(crossover_rate, mutation_rate):
             new_population.append(child1)
 
             if len(new_population) < POP:
-
                 new_population.append(child2)
 
         population = new_population
@@ -484,29 +522,45 @@ def genetic_algorithm(crossover_rate, mutation_rate):
 
 
 # ==========================================
-# 11. WEBSITE HEADER
+# 11. HERO HEADER
 # ==========================================
 
 st.markdown("""
-<div class="description">
-    An intelligent TV program scheduling system using
-    Genetic Algorithm to find an optimal broadcasting schedule
-    based on program ratings.
+<div class="hero">
+
+    <div class="hero-label">
+        BROADCASTING INTELLIGENCE SYSTEM
+    </div>
+
+    <div class="hero-title">
+        TV Program Scheduling
+    </div>
+
+    <div class="hero-description">
+        An intelligent scheduling platform that uses
+        Genetic Algorithm to generate an optimized TV
+        broadcasting schedule based on program ratings.
+    </div>
+
+    <div class="hero-tag">
+        📺 Genetic Algorithm Based Optimization
+    </div>
+
 </div>
 """, unsafe_allow_html=True)
 
-st.divider()
-
 
 # ==========================================
-# 12. SIDEBAR - PARAMETER SETTINGS
+# 12. SIDEBAR - GA SETTINGS
 # ==========================================
 
-st.sidebar.title("GA Settings")
+st.sidebar.markdown("## ⚙️ GA Settings")
 
-st.sidebar.markdown(
-    "Adjust the Genetic Algorithm parameters below."
+st.sidebar.caption(
+    "Configure the parameters before generating your schedule."
 )
+
+st.sidebar.divider()
 
 CO_R = st.sidebar.slider(
     "Crossover Rate (CO_R)",
@@ -526,24 +580,45 @@ MUT_R = st.sidebar.slider(
 
 st.sidebar.divider()
 
-st.sidebar.markdown("**Algorithm Configuration**")
+st.sidebar.markdown("### Algorithm Configuration")
 
-st.sidebar.write(f"Generations: {GEN}")
-st.sidebar.write(f"Population Size: {POP}")
-st.sidebar.write(f"Elitism Size: {EL_S}")
+st.sidebar.markdown(
+    f"""
+    **Generations**
 
-st.sidebar.caption(
-    "Adjust the parameters and click Generate Schedule "
-    "to obtain a new schedule."
+    {GEN}
+
+    **Population Size**
+
+    {POP}
+
+    **Elitism Size**
+
+    {EL_S}
+    """
+)
+
+st.sidebar.divider()
+
+st.sidebar.info(
+    "Change the parameter values and click "
+    "Generate Schedule to create a new result."
 )
 
 
 # ==========================================
-# 13. PROGRAM INFORMATION
+# 13. SYSTEM OVERVIEW
 # ==========================================
 
 st.markdown(
-    '<div class="section-title">System Overview</div>',
+    '<div class="section-heading">System Overview</div>',
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    '<div class="section-description">'
+    'A quick overview of the scheduling dataset and algorithm.'
+    '</div>',
     unsafe_allow_html=True
 )
 
@@ -553,9 +628,10 @@ with col1:
 
     st.markdown(
         f"""
-        <div class="info-card">
-            <div class="card-label">Total Programs</div>
-            <div class="card-value">{len(all_programs)}</div>
+        <div class="stat-card">
+            <div class="stat-label">📺 TOTAL PROGRAMS</div>
+            <div class="stat-value">{len(all_programs)}</div>
+            <div class="stat-note">Available TV programmes</div>
         </div>
         """,
         unsafe_allow_html=True
@@ -565,9 +641,10 @@ with col2:
 
     st.markdown(
         f"""
-        <div class="info-card">
-            <div class="card-label">Available Time Slots</div>
-            <div class="card-value">{len(all_time_slots)}</div>
+        <div class="stat-card">
+            <div class="stat-label">🕒 TIME SLOTS</div>
+            <div class="stat-value">{len(all_time_slots)}</div>
+            <div class="stat-note">Available broadcasting hours</div>
         </div>
         """,
         unsafe_allow_html=True
@@ -576,12 +653,13 @@ with col2:
 with col3:
 
     st.markdown(
-        """
-        <div class="info-card">
-            <div class="card-label">Scheduling Method</div>
-            <div class="card-value" style="font-size:21px;">
+        f"""
+        <div class="stat-card">
+            <div class="stat-label">🧬 OPTIMIZATION METHOD</div>
+            <div class="stat-value" style="font-size:23px;">
                 Genetic Algorithm
             </div>
+            <div class="stat-note">Evolutionary computing technique</div>
         </div>
         """,
         unsafe_allow_html=True
@@ -589,22 +667,44 @@ with col3:
 
 
 # ==========================================
-# 14. GENERATE SCHEDULE BUTTON
+# 14. GENERATE SCHEDULE
 # ==========================================
 
 st.markdown(
-    '<div class="section-title">Generate TV Schedule</div>',
+    '<div class="section-heading">Generate Your Schedule</div>',
     unsafe_allow_html=True
 )
 
-st.write(
-    "Click the button below to generate an optimized "
-    "TV program schedule using the selected parameters."
+st.markdown(
+    '<div class="section-description">'
+    'Run the Genetic Algorithm using your selected parameters.'
+    '</div>',
+    unsafe_allow_html=True
 )
 
-if st.button("Generate Schedule"):
+generate_col, info_col = st.columns([1, 2])
 
-    with st.spinner("Generating the optimal schedule..."):
+with generate_col:
+
+    generate_clicked = st.button(
+        "🚀 Generate Schedule",
+        type="primary",
+        use_container_width=True
+    )
+
+with info_col:
+
+    st.caption(
+        "The algorithm will evaluate different programme "
+        "combinations and return the best schedule found."
+    )
+
+
+if generate_clicked:
+
+    with st.spinner(
+        "Running Genetic Algorithm... Please wait."
+    ):
 
         random.seed()
 
@@ -628,21 +728,36 @@ if st.button("Generate Schedule"):
 if "final_schedule" in st.session_state:
 
     final_schedule = st.session_state["final_schedule"]
-
     total_rating = st.session_state["total_rating"]
 
     used_co_r = st.session_state["used_co_r"]
-
     used_mut_r = st.session_state["used_mut_r"]
+
+    frequency = Counter(final_schedule)
+
+    all_programs_included = (
+        set(final_schedule) == set(all_programs)
+    )
+
+    correct_time_slots = (
+        len(final_schedule) == len(all_time_slots)
+    )
 
     st.divider()
 
     st.markdown(
-        '<div class="section-title">Scheduling Results</div>',
+        '<div class="section-heading">📊 Scheduling Results</div>',
         unsafe_allow_html=True
     )
 
-    # Result metrics
+    st.markdown(
+        '<div class="section-description">'
+        'The results generated by the Genetic Algorithm.'
+        '</div>',
+        unsafe_allow_html=True
+    )
+
+    # RESULT METRICS
 
     col1, col2, col3 = st.columns(3)
 
@@ -656,30 +771,23 @@ if "final_schedule" in st.session_state:
     with col2:
 
         st.metric(
-            "Total Programs",
-            len(set(final_schedule))
+            "Programs Included",
+            f"{len(set(final_schedule))}/{len(all_programs)}"
         )
 
     with col3:
 
         st.metric(
-            "Time Slots",
-            len(final_schedule)
+            "Time Slots Assigned",
+            f"{len(final_schedule)}/{len(all_time_slots)}"
         )
-
-    # Display used parameters
 
     st.caption(
         f"Parameters used: CO_R = {used_co_r:.2f} "
         f"| MUT_R = {used_mut_r:.2f}"
     )
 
-    # Schedule table
-
-    st.markdown(
-        '<div class="section-title">Final TV Program Schedule</div>',
-        unsafe_allow_html=True
-    )
+    # PREPARE SCHEDULE DATA
 
     schedule_data = []
 
@@ -697,20 +805,7 @@ if "final_schedule" in st.session_state:
 
     schedule_df = pd.DataFrame(schedule_data)
 
-    st.dataframe(
-        schedule_df,
-        use_container_width=True,
-        hide_index=True
-    )
-
-    # Program frequency
-
-    st.markdown(
-        '<div class="section-title">Program Frequency</div>',
-        unsafe_allow_html=True
-    )
-
-    frequency = Counter(final_schedule)
+    # PREPARE FREQUENCY DATA
 
     frequency_df = pd.DataFrame({
         "Program": all_programs,
@@ -720,138 +815,221 @@ if "final_schedule" in st.session_state:
         ]
     })
 
-    col1, col2 = st.columns([1, 1.5])
+    # RESULT TABS
 
-    with col1:
+    tab1, tab2, tab3 = st.tabs([
+        "📅 TV Schedule",
+        "📈 Analytics",
+        "✅ Validation"
+    ])
+
+    # --------------------------------------
+    # TAB 1: SCHEDULE
+    # --------------------------------------
+
+    with tab1:
+
+        st.markdown(
+            '<div class="section-heading">'
+            'Final TV Program Schedule</div>',
+            unsafe_allow_html=True
+        )
+
+        st.markdown(
+            '<div class="section-description">'
+            'The assigned programme for each broadcasting time slot.'
+            '</div>',
+            unsafe_allow_html=True
+        )
 
         st.dataframe(
-            frequency_df,
+            schedule_df,
+            use_container_width=True,
+            hide_index=True,
+            height=620
+        )
+
+        csv_data = schedule_df.to_csv(
+            index=False
+        ).encode("utf-8")
+
+        st.download_button(
+            label="⬇️ Download Schedule as CSV",
+            data=csv_data,
+            file_name="final_tv_schedule.csv",
+            mime="text/csv",
+            use_container_width=True,
+            type="primary"
+        )
+
+    # --------------------------------------
+    # TAB 2: ANALYTICS
+    # --------------------------------------
+
+    with tab2:
+
+        st.markdown(
+            '<div class="section-heading">'
+            'Program Frequency Analysis</div>',
+            unsafe_allow_html=True
+        )
+
+        st.markdown(
+            '<div class="section-description">'
+            'Shows how many times each programme appears in the schedule.'
+            '</div>',
+            unsafe_allow_html=True
+        )
+
+        col1, col2 = st.columns([1, 1.5])
+
+        with col1:
+
+            st.markdown("#### Frequency Summary")
+
+            st.dataframe(
+                frequency_df,
+                use_container_width=True,
+                hide_index=True,
+                height=420
+            )
+
+        with col2:
+
+            st.markdown("#### Programme Distribution")
+
+            st.bar_chart(
+                frequency_df.set_index("Program"),
+                y="Frequency",
+                use_container_width=True
+            )
+
+        st.divider()
+
+        st.markdown("#### Program Rating by Time Slot")
+
+        rating_chart_df = schedule_df[
+            ["Time Slot", "Program Rating"]
+        ].set_index("Time Slot")
+
+        st.bar_chart(
+            rating_chart_df,
+            use_container_width=True
+        )
+
+    # --------------------------------------
+    # TAB 3: VALIDATION
+    # --------------------------------------
+
+    with tab3:
+
+        st.markdown(
+            '<div class="section-heading">'
+            'Schedule Validation</div>',
+            unsafe_allow_html=True
+        )
+
+        st.markdown(
+            '<div class="section-description">'
+            'Checks whether the generated schedule satisfies '
+            'the scheduling requirements.'
+            '</div>',
+            unsafe_allow_html=True
+        )
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+
+            if all_programs_included:
+
+                st.markdown(
+                    """
+                    <div class="status-success">
+                        ✓ All programs are included.
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+            else:
+
+                st.markdown(
+                    """
+                    <div class="status-failure">
+                        ✗ Some programs are missing.
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+        with col2:
+
+            if correct_time_slots:
+
+                st.markdown(
+                    """
+                    <div class="status-success">
+                        ✓ All time slots are assigned.
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+            else:
+
+                st.markdown(
+                    """
+                    <div class="status-failure">
+                        ✗ Some time slots are missing.
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+        if all_programs_included and correct_time_slots:
+
+            st.markdown(
+                """
+                <div class="status-info">
+                    ✓ SCHEDULE VALID
+
+                    <div style="
+                        font-size:13px;
+                        font-weight:400;
+                        margin-top:6px;">
+                        All scheduling requirements are satisfied.
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+
+        else:
+
+            st.error(
+                "Schedule Invalid. Please check the scheduling results."
+            )
+
+        st.markdown("#### Validation Summary")
+
+        validation_df = pd.DataFrame({
+            "Requirement": [
+                "All programs are included",
+                "All time slots are assigned"
+            ],
+            "Status": [
+                "Passed" if all_programs_included else "Failed",
+                "Passed" if correct_time_slots else "Failed"
+            ]
+        })
+
+        st.dataframe(
+            validation_df,
             use_container_width=True,
             hide_index=True
         )
 
-    with col2:
-
-        st.bar_chart(
-            frequency_df.set_index("Program"),
-            y="Frequency"
-        )
-
-    # Schedule validation
-
-    st.markdown(
-        '<div class="section-title">Schedule Validation</div>',
-        unsafe_allow_html=True
-    )
-
-    all_programs_included = (
-        set(final_schedule) == set(all_programs)
-    )
-
-    correct_time_slots = (
-        len(final_schedule) == len(all_time_slots)
-    )
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-
-        if all_programs_included:
-            st.markdown("""
-            <div style="
-                background-color:#E8F5E9;
-                border:1px solid #A5D6A7;
-                border-radius:10px;
-                padding:15px;
-                color:#1B5E20;
-                font-weight:600;">
-                ✓ All programs are included.
-            </div>
-            """, unsafe_allow_html=True)
-
-        else:
-            st.markdown("""
-            <div style="
-                background-color:#FDECEC;
-                border:1px solid #F5B5B5;
-                border-radius:10px;
-                padding:15px;
-                color:#B71C1C;
-                font-weight:600;">
-                ✗ Some programs are missing.
-            </div>
-            """, unsafe_allow_html=True)
-
-    with col2:
-
-        if correct_time_slots:
-            st.markdown("""
-            <div style="
-                background-color:#E8F5E9;
-                border:1px solid #A5D6A7;
-                border-radius:10px;
-                padding:15px;
-                color:#1B5E20;
-                font-weight:600;">
-                ✓ All time slots are assigned.
-            </div>
-            """, unsafe_allow_html=True)
-
-        else:
-            st.markdown("""
-            <div style="
-                background-color:#FDECEC;
-                border:1px solid #F5B5B5;
-                border-radius:10px;
-                padding:15px;
-                color:#B71C1C;
-                font-weight:600;">
-                ✗ Some time slots are missing.
-            </div>
-            """, unsafe_allow_html=True)
-
-    if all_programs_included and correct_time_slots:
-
-        st.markdown("""
-        <div style="
-            background-color:#E3F2FD;
-            border:1px solid #90CAF9;
-            border-radius:10px;
-            padding:15px;
-            margin-top:15px;
-            color:#0D47A1;
-            font-weight:700;">
-            ✓ SCHEDULE VALID
-            <div style="
-                font-size:13px;
-                font-weight:400;
-                margin-top:5px;
-                color:#1565C0;">
-                All scheduling requirements are satisfied.
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    else:
-
-        st.error("Schedule Invalid. Please check the scheduling results.")
-
-    # DOWNLOAD SCHEDULE
-
-    st.markdown(
-        '<div class="section-title">Download Schedule</div>',
-        unsafe_allow_html=True
-    )
-
-    csv_data = schedule_df.to_csv(index=False).encode("utf-8")
-
-    st.download_button(
-        label="Download Schedule as CSV",
-        data=csv_data,
-        file_name="final_tv_schedule.csv",
-        mime="text/csv",
-        use_container_width=True
-    )
 
 # ==========================================
 # 16. FOOTER
@@ -861,9 +1039,10 @@ st.divider()
 
 st.markdown(
     """
-    <div style="text-align:center; color:#94A3B8;
-                font-size:13px; padding:10px;">
-        TV Program Scheduling System | Genetic Algorithm
+    <div class="footer">
+        TV PROGRAM SCHEDULING SYSTEM
+        <br>
+        Powered by Genetic Algorithm | Evolutionary Computing
     </div>
     """,
     unsafe_allow_html=True
