@@ -687,7 +687,7 @@ if generate_clicked:
         "Running Genetic Algorithm... Please wait."
     ):
 
-        random.seed()
+        random.seed(42)
 
         final_schedule = genetic_algorithm(
             crossover_rate=CO_R,
