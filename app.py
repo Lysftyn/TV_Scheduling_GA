@@ -2,6 +2,8 @@
 import streamlit as st
 import pandas as pd
 import random
+random.seed(42)
+
 from pathlib import Path
 from collections import Counter
 
