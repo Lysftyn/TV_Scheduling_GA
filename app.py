@@ -589,11 +589,11 @@ st.sidebar.divider()
 st.sidebar.markdown(
     """
     <div style="
-        background-color: #1E3A8A;
-        border: 1px solid #60A5FA;
+        background-color: var(--secondary-background-color);
+        border: 1px solid var(--border-color);
         border-radius: 10px;
         padding: 12px;
-        color: #FFFFFF !important;
+        color: var(--text-color) !important;
         font-size: 13px;
         font-weight: 600;
         line-height: 1.6;
@@ -603,7 +603,6 @@ st.sidebar.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
 # ==========================================
 # 13. SYSTEM OVERVIEW
