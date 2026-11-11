@@ -173,7 +173,12 @@ p, label, li {
     border-radius: 10px !important;
     min-height: 45px;
     font-weight: 700 !important;
-    transition: 0.2s ease;
+}
+
+.stButton > button p,
+.stButton > button span,
+.stButton > button div {
+    color: #FFFFFF !important;
 }
 
 .stButton > button:hover {
