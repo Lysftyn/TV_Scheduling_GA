@@ -683,12 +683,12 @@ with info_col:
     st.markdown(
         """
         <p style="
-            color: #475569 !important;
+            color: #FFFFFF !important;
             font-size: 14px;
             font-weight: 500;
         ">
-            The algorithm will evaluate different programme
-            combinations and return the best schedule found.
+            Change the parameter values and click
+            Generate Schedule to create a new result.
         </p>
         """,
         unsafe_allow_html=True
