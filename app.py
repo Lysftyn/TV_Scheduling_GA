@@ -525,29 +525,7 @@ def genetic_algorithm(crossover_rate, mutation_rate):
 # ==========================================
 
 st.markdown(
-    """
-    <div class="hero">
-
-        <div class="hero-label">
-            BROADCASTING INTELLIGENCE SYSTEM
-        </div>
-
-        <div class="hero-title">
-            TV Program Scheduling
-        </div>
-
-        <div class="hero-description">
-            An intelligent scheduling platform that uses
-            Genetic Algorithm to generate an optimized TV
-            broadcasting schedule based on program ratings.
-        </div>
-
-        <div class="hero-tag">
-            📺 Genetic Algorithm Based Optimization
-        </div>
-
-    </div>
-    """,
+    "<h1 style='color: blue;'>TV Program Scheduling</h1>",
     unsafe_allow_html=True
 )
 
