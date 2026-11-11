@@ -285,12 +285,6 @@ button[data-baseweb="tab"][aria-selected="true"] {
     padding: 20px 5px;
 }
 
-/* Fix sidebar info text in dark mode */
-html[data-theme="dark"] section[data-testid="stSidebar"]
-[data-testid="stAlert"] p {
-    color: #FFFFFF !important;
-}
-
 /* Sidebar help message - LIGHT MODE */
 html[data-theme="light"] .sidebar-help-box {
     background-color: #EFF6FF !important;
