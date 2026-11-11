@@ -680,9 +680,18 @@ with generate_col:
 
 with info_col:
 
-    st.caption(
-        "The algorithm will evaluate different programme "
-        "combinations and return the best schedule found."
+    st.markdown(
+        """
+        <p style="
+            color: #475569 !important;
+            font-size: 14px;
+            font-weight: 500;
+        ">
+            The algorithm will evaluate different programme
+            combinations and return the best schedule found.
+        </p>
+        """,
+        unsafe_allow_html=True
     )
 
 
